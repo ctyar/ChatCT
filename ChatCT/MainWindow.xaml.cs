@@ -4,8 +4,9 @@ using System.Threading;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Documents;
+using System.Windows.Media;
 using System.Windows.Media.Imaging;
+using ChatCT.Core;
 
 namespace ChatCT.Wpf
 {
@@ -14,28 +15,43 @@ namespace ChatCT.Wpf
     /// </summary>
     public partial class MainWindow : Window
     {
+        private MessageManager _messageManager;
+        private readonly EmoteManager _emoteManager;
         private CancellationTokenSource _cancellationTokenSource;
+        private ScrollViewer _chatBoxScrollViewer;
 
         public MainWindow()
         {
+            _emoteManager = new EmoteManager();
+
             InitializeComponent();
 
-            Start.Click += StartOnClick;
-            Stop.Click += StopOnClick;
+            Connect.Click += ConnectOnClick;
+            Disconnect.Click += DisconnectOnClick;
         }
 
-        private void StopOnClick(object sender, RoutedEventArgs e)
+        private void DisconnectOnClick(object sender, RoutedEventArgs e)
         {
-            _cancellationTokenSource?.Cancel();
+            Disconnect.IsEnabled = false;
+            Connect.IsEnabled = true;
+
+            _messageManager?.Disconnect();
         }
 
-        private async void StartOnClick(object sender, RoutedEventArgs e)
+        private async void ConnectOnClick(object sender, RoutedEventArgs e)
         {
+            Connect.IsEnabled = false;
+            Disconnect.IsEnabled = true;
+
             _cancellationTokenSource = _cancellationTokenSource ?? new CancellationTokenSource();
             var blockingCollection = new BlockingCollection<string>();
-            var producer = new Producer(blockingCollection, _cancellationTokenSource.Token);
+            _messageManager = new MessageManager(blockingCollection, _cancellationTokenSource.Token);
 
-            var producerTask = Task.Run(() => producer.GetMessagesAsync());
+            var username = Username.Text;
+            var accessToken = AccessToken.Text;
+            var channel = Channel.Text;
+
+            var producerTask = Task.Run(() => _messageManager.Connect(username, accessToken, channel));
 
             while (!blockingCollection.IsCompleted)
             {
@@ -60,30 +76,38 @@ namespace ChatCT.Wpf
 
         private void AddMessage(string message)
         {
-            var stackPanel = new StackPanel();
-            stackPanel.Orientation = Orientation.Horizontal;
-            stackPanel.Children.Add(GetStringMessage(message));
-            stackPanel.Children.Add(GetEmoji());
-            stackPanel.Children.Add(GetStringMessage("Some more text."));
+            var stackPanel = new StackPanel { Orientation = Orientation.Horizontal };
 
-            var blockUiContainer = new BlockUIContainer();
-            blockUiContainer.Child = stackPanel;
+            var messageResult = _emoteManager.ParseEmotes(message);
+            foreach (var messageItem in messageResult.Items)
+            {
+                if (messageItem.Type == ItemType.Emote)
+                {
+                    stackPanel.Children.Add(GetEmote(messageItem.Content));
+                }
+                else
+                {
+                    stackPanel.Children.Add(GetStringMessage(messageItem.Content));
+                }
+            }
 
-            ChatBox.Blocks.Add(blockUiContainer);
+            ChatBox.Items.Add(stackPanel);
+            if (_chatBoxScrollViewer == null)
+            {
+                var border = (Border)VisualTreeHelper.GetChild(ChatBox, 0);
+                _chatBoxScrollViewer = (ScrollViewer)VisualTreeHelper.GetChild(border, 0);
+            }
+
+            _chatBoxScrollViewer.ScrollToBottom();
         }
 
-        private UIElement GetStringMessage(string message)
-        {
-            var label = new Label { Content = message };
+        private UIElement GetStringMessage(string message) => new TextBlock { Text = message };
 
-            return label;
-        }
-
-        private UIElement GetEmoji()
+        private UIElement GetEmote(string emotePath)
         {
             var image = new Image
             {
-                Source = new BitmapImage(new Uri(@"C:\Users\Shahriar\Pictures\1.jpg", UriKind.Absolute)),
+                Source = new BitmapImage(new Uri(emotePath, UriKind.Relative)),
                 Height = 20
             };
 

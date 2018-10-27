@@ -6,12 +6,13 @@
         xmlns:local="clr-namespace:ChatCT"
         mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="800">
-    <FlowDocument Name="ChatBox">
-        <BlockUIContainer>
-            <Button Name="Start">Start</Button>
-        </BlockUIContainer>
-        <BlockUIContainer>
-            <Button Name="Stop">Stop</Button>
-        </BlockUIContainer>
-    </FlowDocument>
+    <StackPanel>
+        <TextBox Name="Username">Username</TextBox>
+        <TextBox Name="AccessToken">Access token</TextBox>
+        <TextBox Name="Channel">Channel</TextBox>
+        <Button Name="Connect">Connect</Button>
+        <Button Name="Disconnect" IsEnabled="False">Disconnect</Button>
+        <ListBox Name="ChatBox" ScrollViewer.VerticalScrollBarVisibility="Visible" Height="300">
+        </ListBox>
+    </StackPanel>
 </Window>
