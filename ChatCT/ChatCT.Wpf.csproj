@@ -6,8 +6,8 @@
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <ProjectGuid>{910B066C-E41F-4AB9-871B-731A531E0C7D}</ProjectGuid>
     <OutputType>WinExe</OutputType>
-    <RootNamespace>ChatCT</RootNamespace>
-    <AssemblyName>ChatCT</AssemblyName>
+    <RootNamespace>ChatCT.Wpf</RootNamespace>
+    <AssemblyName>ChatCT.Wpf</AssemblyName>
     <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <ProjectTypeGuids>{60dc8134-eba5-43b8-bcc9-bb4bc16c2548};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
@@ -69,6 +69,7 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Producer.cs" />
     <Compile Include="Properties\AssemblyInfo.cs">
       <SubType>Code</SubType>
     </Compile>

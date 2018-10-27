@@ -3,7 +3,9 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
 VisualStudioVersion = 15.0.28010.2046
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ChatCT", "ChatCT\ChatCT.csproj", "{910B066C-E41F-4AB9-871B-731A531E0C7D}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ChatCT.Wpf", "ChatCT\ChatCT.Wpf.csproj", "{910B066C-E41F-4AB9-871B-731A531E0C7D}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ChatCT.Core", "ChatCT.Core\ChatCT.Core.csproj", "{3EBD8290-836D-472D-AC78-446D18BDE605}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -15,6 +17,10 @@ Global
 		{910B066C-E41F-4AB9-871B-731A531E0C7D}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{910B066C-E41F-4AB9-871B-731A531E0C7D}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{910B066C-E41F-4AB9-871B-731A531E0C7D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3EBD8290-836D-472D-AC78-446D18BDE605}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3EBD8290-836D-472D-AC78-446D18BDE605}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3EBD8290-836D-472D-AC78-446D18BDE605}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3EBD8290-836D-472D-AC78-446D18BDE605}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

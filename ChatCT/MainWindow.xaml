@@ -1,4 +1,4 @@
-﻿<Window x:Class="ChatCT.MainWindow"
+﻿<Window x:Class="ChatCT.Wpf.MainWindow"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
@@ -6,7 +6,12 @@
         xmlns:local="clr-namespace:ChatCT"
         mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="800">
-    <Grid>
-        
-    </Grid>
+    <FlowDocument Name="ChatBox">
+        <BlockUIContainer>
+            <Button Name="Start">Start</Button>
+        </BlockUIContainer>
+        <BlockUIContainer>
+            <Button Name="Stop">Stop</Button>
+        </BlockUIContainer>
+    </FlowDocument>
 </Window>
