@@ -5,7 +5,11 @@ VisualStudioVersion = 15.0.28010.2046
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ChatCT.Wpf", "ChatCT\ChatCT.Wpf.csproj", "{910B066C-E41F-4AB9-871B-731A531E0C7D}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ChatCT.Core", "ChatCT.Core\ChatCT.Core.csproj", "{3EBD8290-836D-472D-AC78-446D18BDE605}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ChatCT.Core", "ChatCT.Core\ChatCT.Core.csproj", "{3EBD8290-836D-472D-AC78-446D18BDE605}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ChatCT.Blazor.Server", "ChatCT.Blazor.Server\ChatCT.Blazor.Server.csproj", "{8160AE66-0EB5-44C9-98C2-29FFE30A2A89}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ChatCT.Blazor.App", "ChatCT.Blazor.App\ChatCT.Blazor.App.csproj", "{886506B0-8501-40D6-83D4-6F946A84B5A5}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -21,6 +25,14 @@ Global
 		{3EBD8290-836D-472D-AC78-446D18BDE605}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{3EBD8290-836D-472D-AC78-446D18BDE605}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{3EBD8290-836D-472D-AC78-446D18BDE605}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8160AE66-0EB5-44C9-98C2-29FFE30A2A89}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8160AE66-0EB5-44C9-98C2-29FFE30A2A89}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8160AE66-0EB5-44C9-98C2-29FFE30A2A89}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8160AE66-0EB5-44C9-98C2-29FFE30A2A89}.Release|Any CPU.Build.0 = Release|Any CPU
+		{886506B0-8501-40D6-83D4-6F946A84B5A5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{886506B0-8501-40D6-83D4-6F946A84B5A5}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{886506B0-8501-40D6-83D4-6F946A84B5A5}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{886506B0-8501-40D6-83D4-6F946A84B5A5}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

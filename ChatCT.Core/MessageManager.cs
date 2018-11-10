@@ -11,12 +11,19 @@ namespace ChatCT.Core
     public class MessageManager
     {
         private readonly BlockingCollection<string> _blockingCollection;
+        private readonly Action<string> _callBack;
         private readonly CancellationToken _cancellationToken;
         private TwitchClient _twitchClient;
 
         public MessageManager(BlockingCollection<string> blockingCollection, CancellationToken cancellationToken)
         {
             _blockingCollection = blockingCollection;
+            _cancellationToken = cancellationToken;
+        }
+
+        public MessageManager(Action<string> callBack, CancellationToken cancellationToken)
+        {
+            _callBack = callBack;
             _cancellationToken = cancellationToken;
         }
 
@@ -51,7 +58,8 @@ namespace ChatCT.Core
 
         private void OnMessageReceived(object sender, OnMessageReceivedArgs e)
         {
-            AddMessage(e.ChatMessage.Message);
+            _callBack(e.ChatMessage.Message);
+            //AddMessage(e.ChatMessage.Message);
         }
 
         private void AddMessage(string message)
