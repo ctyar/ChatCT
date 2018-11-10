@@ -3,11 +3,13 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
 VisualStudioVersion = 15.0.28010.2046
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ChatCT.Core", "ChatCT.Core\ChatCT.Core.csproj", "{3EBD8290-836D-472D-AC78-446D18BDE605}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ChatCT.Core", "src\ChatCT.Core\ChatCT.Core.csproj", "{3EBD8290-836D-472D-AC78-446D18BDE605}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ChatCT.Blazor.Server", "ChatCT.Blazor.Server\ChatCT.Blazor.Server.csproj", "{8160AE66-0EB5-44C9-98C2-29FFE30A2A89}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ChatCT.Blazor.Server", "src\ChatCT.Blazor.Server\ChatCT.Blazor.Server.csproj", "{8160AE66-0EB5-44C9-98C2-29FFE30A2A89}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ChatCT.Blazor.App", "ChatCT.Blazor.App\ChatCT.Blazor.App.csproj", "{886506B0-8501-40D6-83D4-6F946A84B5A5}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ChatCT.Blazor.App", "src\ChatCT.Blazor.App\ChatCT.Blazor.App.csproj", "{886506B0-8501-40D6-83D4-6F946A84B5A5}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{D36AFD29-4E7C-415B-A376-D64DDD4F6328}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -30,6 +32,11 @@ Global
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{3EBD8290-836D-472D-AC78-446D18BDE605} = {D36AFD29-4E7C-415B-A376-D64DDD4F6328}
+		{8160AE66-0EB5-44C9-98C2-29FFE30A2A89} = {D36AFD29-4E7C-415B-A376-D64DDD4F6328}
+		{886506B0-8501-40D6-83D4-6F946A84B5A5} = {D36AFD29-4E7C-415B-A376-D64DDD4F6328}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {D55721C3-B168-4790-A452-C87A33F49DE9}
