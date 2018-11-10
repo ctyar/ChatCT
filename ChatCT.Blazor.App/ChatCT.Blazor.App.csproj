@@ -15,6 +15,10 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\ChatCT.Core\ChatCT.Core.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
     <Content Update="Pages\Channel.cshtml">
       <Pack>$(IncludeRazorContentInPack)</Pack>
     </Content>

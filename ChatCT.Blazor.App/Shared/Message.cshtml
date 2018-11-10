@@ -1,0 +1,15 @@
+﻿@using ChatCT.Core
+
+@inherits MessageBase
+
+@foreach (var messageItem in Value.Items)
+{
+    if (messageItem is Emote emote)
+    {
+        <img src="@emote.Content" style="@GetStyle(emote)"/>
+    }
+    else
+    {
+        @messageItem.Content
+    }
+}

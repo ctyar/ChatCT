@@ -1,6 +1,4 @@
 ﻿using System;
-using System.Collections.Concurrent;
-using System.Threading;
 using TwitchLib.Client;
 using TwitchLib.Client.Events;
 using TwitchLib.Client.Models;
@@ -10,21 +8,12 @@ namespace ChatCT.Core
 {
     public class MessageManager
     {
-        private readonly BlockingCollection<string> _blockingCollection;
         private readonly Action<string> _callBack;
-        private readonly CancellationToken _cancellationToken;
         private TwitchClient _twitchClient;
 
-        public MessageManager(BlockingCollection<string> blockingCollection, CancellationToken cancellationToken)
-        {
-            _blockingCollection = blockingCollection;
-            _cancellationToken = cancellationToken;
-        }
-
-        public MessageManager(Action<string> callBack, CancellationToken cancellationToken)
+        public MessageManager(Action<string> callBack)
         {
             _callBack = callBack;
-            _cancellationToken = cancellationToken;
         }
 
         public void Connect(string username, string accessToken, string channel)
@@ -43,7 +32,7 @@ namespace ChatCT.Core
 
         public void Disconnect()
         {
-            _twitchClient.Disconnect();
+            _twitchClient?.Disconnect();
         }
 
         private void OnConnected(object sender, OnConnectedArgs e)
@@ -58,20 +47,12 @@ namespace ChatCT.Core
 
         private void OnMessageReceived(object sender, OnMessageReceivedArgs e)
         {
-            _callBack(e.ChatMessage.Message);
-            //AddMessage(e.ChatMessage.Message);
+            AddMessage(e.ChatMessage.Message);
         }
 
         private void AddMessage(string message)
         {
-            try
-            {
-                _blockingCollection.TryAdd(message, 2, _cancellationToken);
-            }
-            catch (OperationCanceledException)
-            {
-                _blockingCollection.CompleteAdding();
-            }
+            _callBack(message);
         }
     }
 }

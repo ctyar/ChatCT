@@ -1,10 +1,12 @@
-﻿@page "/channel"
+﻿@page "/channel/{Channel}/{UserName}/{Token}"
 
 @inherits ChannelBase
 
 <ul>
-    @foreach (var num in Numbers)
+    @foreach (var messageResult in Messages)
     {
-        <li>@num</li>
+        <li>
+            <Message Value="@messageResult" />
+        </li>
     }
 </ul>

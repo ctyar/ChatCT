@@ -1,7 +1,21 @@
 ﻿@page "/"
 
-<h1>Hello, world!</h1>
+@inherits IndexBase
 
-Welcome to your new app.
+<h1>ChatCT</h1>
 
-<SurveyPrompt Title="How is Blazor working for you?" />
+<div>
+    <div class="form-group">
+        <label for="Channel">Channel:</label>
+        <input type="text" class="form-control" bind="@Channel" />
+    </div>
+    <div class="form-group">
+        <label for="UserName">Username:</label>
+        <input type="text" class="form-control" bind="@UserName" />
+    </div>
+    <div class="form-group">
+        <label for="Token">Token:</label>
+        <input type="text" class="form-control" bind="@Token" />
+    </div>
+    <button type="submit" class="btn btn-default" onclick="@OpenChannel">Go</button>
+</div>
